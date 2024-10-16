@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
@@ -15,7 +16,10 @@ def create_app():
 
     # Configurações de sessão
     app.config['SECRET_KEY'] = 'secret_key_here'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///meuclima.db'
+    if os.getenv("DATABASE_URL"):
+        app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
+    else:
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pattern.db'
     app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=7)
 
     # Configurações do servidor de e-mail (Use suas próprias configurações)
