@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeuClima - Bem-vindo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Imagem de fundo */
+        body {
+            background-image: url('{{ url_for('static', filename='background.jpg') }}'); /* Substitua com sua imagem */
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Navbar fixada no topo */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        /* Container de grid com carrossel e bloco de texto */
+        .content-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 100px;
+        }
+
+        /* Fade in para o texto e carrossel */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        /* Animação fadeIn */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Estilo da logo */
+        .navbar-brand img {
+            width: 50px;
+            height: 50px;
+        }
+
+        /* Justificar texto */
+        .content-text {
+            text-align: justify;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Estilo do bloco de texto */
+        .content-box {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Ajustes no carrossel */
+        .carousel-inner img {
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilo do Toast */
+        .toast-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1050;
+        }
+
+        /* Desativar clique com o botão direito */
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar fixa no topo com login e registro -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+               <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo MeuClima">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="/login" class="btn btn-outline-success me-2" type="button">Logar</a>
+                        <a href="/register" class="btn btn-outline-success me-2" type="button">Registrar-se</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo central (bloco de texto + carrossel) -->
+    <div class="container content-container">
+        <div class="col-md-6 fade-in">
+            <!-- Bloco de texto com explicação -->
+            <div class="content-box content-text">
+                <h1 style="font-size: 2.5rem; font-weight: bold;">Meu Clima</h1>
+                <p>O Meu Clima é uma solução criada especialmente para pequenos e médios agricultores, com o objetivo de fornecer um suporte climático personalizado que facilita a tomada de decisões no campo.</p>
+
+                <p>A solução permite que os agricultores monitorem diversas variáveis, como temperatura, precipitação, umidade, vento e focos de queimada, e entendam como esses fatores impactam cada tipo de cultivo. Com informações precisas e atualizadas, O Meu Clima ajuda a reduzir riscos, otimizar recursos e melhorar a produtividade, tudo de forma acessível e fácil de usar.</p>
+
+                <p>Além disso, o aplicativo emite alertas personalizados em tempo real, permitindo que os agricultores se antecipem a condições climáticas adversas e tomem medidas preventivas para proteger suas lavouras. Dessa forma, O Meu Clima se torna um aliado essencial na busca por práticas agrícolas mais seguras, eficientes e sustentáveis.</p>
+            </div>
+        </div>
+
+        <!-- Carrossel -->
+        <div class="col-md-6 fade-in">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ url_for('static', filename='Slide01.jpg') }}" class="d-block w-100" alt="Sld1">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>Segundo o IBGE, a agricultura familiar é responsável por 70% dos alimentos consumidos no Brasil e 23% das áreas rurais.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ url_for('static', filename='Slide02.jpg') }}" class="d-block w-100" alt="Sld2">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>No Rio Grande do Norte o período de chuvas acima da média esperada afetou a agricultura familiar, alguns produtores afirmaram terem coletado 10% a menos da média</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{{ url_for('static', filename='Slide03.jpg') }}" class="d-block w-100" alt="Sld3">
+                        <div class="carousel-caption d-none d-md-block">
+                            <p>No final de 2023, um estudo levantado no estado de Rondônia constatou que na produção de mandioca, os produtores familiares reportaram um queda de 15% na produção por conta dos períodos de seca que não foram previstos</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast promocional no final da página -->
+    <div class="toast-container">
+        <div class="toast fade home.html" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+            <div class="toast-header">
+                <strong class="me-auto">OFERTA ESPECIAL MEU CLIMA</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Aproveite a oferta especial e adquira funcionalidades avançadas para monitoramento climático por apenas R$ 5,90/mês.
+                <a href="#" class="btn btn-sm btn-primary mt-2">Saiba Mais</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Desativa o clique com o botão direito
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // Exibe o toast após 3 segundos
+    document.addEventListener('DOMContentLoaded', function () {
+        var toastEl = document.querySelector('.toast');
+        var toast = new bootstrap.Toast(toastEl);
+
+        // Delay de 3 segundos (3000 milissegundos) antes de exibir o toast
+        setTimeout(function() {
+            toast.show();
+        }, 3000); // 3000 milissegundos = 3 segundos
+    });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

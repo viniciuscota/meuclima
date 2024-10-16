@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block main %}
+<style>
+        /* Estilo das informações climáticas */
+        .safras {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-top: 1000px;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            border-radius: 10px;
+            div {
+                color: white;
+            }
+        }
+</style>
+<div class="safras">
+
+<div class="container mt-5">
+        <div class="cultivo-header text-center">
+            <h1>Principais Cultivos do Brasil</h1>
+            <p>Informações sobre clima, época de plantio e safra dos principais cultivos brasileiros.</p>
+        </div>
+
+        <!-- Soja -->
+        <div class="cultivo-item">
+            <h3>Soja</h3>
+            <p>A <strong>soja</strong> é o principal cultivo do Brasil, com grande importância econômica. O país é o maior produtor mundial de soja.</p>
+            <ul>
+                <li><strong>Clima ideal:</strong> A soja prefere climas quentes e úmidos, com temperaturas entre 20°C e 30°C.</li>
+                <li><strong>Época de plantio:</strong> O plantio ocorre entre outubro e dezembro, após o início das chuvas da primavera.</li>
+                <li><strong>Duração da safra:</strong> De 90 a 120 dias, com colheita entre fevereiro e maio.</li>
+                <li><strong>Regiões produtoras:</strong> Goiás, Mato Grosso e Paraná são os principais estados produtores.</li>
+            </ul>
+        </div>
+
+        <!-- Milho -->
+        <div class="cultivo-item">
+            <h3>Milho</h3>
+            <p>O <strong>milho</strong> é um dos alimentos mais versáteis, usado tanto para consumo humano quanto para ração animal e produção de etanol.</p>
+            <ul>
+                <li><strong>Clima ideal:</strong> O milho prospera em temperaturas entre 18°C e 27°C, com bom regime de chuvas.</li>
+                <li><strong>Época de plantio:</strong> Existem duas safras principais: a primeira entre outubro e dezembro, e a segunda ("safrinha") entre janeiro e março.</li>
+                <li><strong>Duração da safra:</strong> A safra de milho leva de 120 a 150 dias para maturação.</li>
+                <li><strong>Regiões produtoras:</strong> Paraná, Mato Grosso e Goiás são os maiores produtores.</li>
+            </ul>
+        </div>
+
+        <!-- Cana-de-Açúcar -->
+        <div class="cultivo-item">
+            <h3>Cana-de-Açúcar</h3>
+            <p>A <strong>cana-de-açúcar</strong> é o principal cultivo para a produção de açúcar e etanol no Brasil, sendo uma das maiores culturas exportadoras do país.</p>
+            <ul>
+                <li><strong>Clima ideal:</strong> A cana-de-açúcar requer temperaturas altas, de 20°C a 35°C, e chuvas bem distribuídas ao longo do ano.</li>
+                <li><strong>Época de plantio:</strong> O plantio é realizado entre setembro e março.</li>
+                <li><strong>Duração da safra:</strong> A colheita acontece após 12 a 18 meses do plantio, geralmente entre abril e novembro.</li>
+                <li><strong>Regiões produtoras:</strong> São Paulo, Minas Gerais e Goiás.</li>
+            </ul>
+        </div>
+
+        <!-- Café -->
+        <div class="cultivo-item">
+            <h3>Café</h3>
+            <p>O <strong>café</strong> é uma das culturas mais tradicionais do Brasil, com o país sendo o maior produtor e exportador mundial.</p>
+            <ul>
+                <li><strong>Clima ideal:</strong> O café é cultivado em altitudes entre 800m e 1.400m, com temperaturas médias entre 18°C e 22°C.</li>
+                <li><strong>Época de plantio:</strong> Geralmente plantado entre março e abril, no final da estação chuvosa.</li>
+                <li><strong>Duração da safra:</strong> A colheita ocorre de maio a setembro.</li>
+                <li><strong>Regiões produtoras:</strong> Minas Gerais, Espírito Santo e São Paulo.</li>
+            </ul>
+        </div>
+
+        <!-- Algodão -->
+        <div class="cultivo-item">
+            <h3>Algodão</h3>
+            <p>O <strong>algodão</strong> é essencial tanto para a indústria têxtil quanto para a exportação brasileira.</p>
+            <ul>
+                <li><strong>Clima ideal:</strong> Prefere temperaturas entre 20°C e 35°C e regiões com boa distribuição de chuvas.</li>
+                <li><strong>Época de plantio:</strong> Plantado entre dezembro e janeiro.</li>
+                <li><strong>Duração da safra:</strong> A safra dura de 150 a 180 dias, com colheita entre junho e agosto.</li>
+                <li><strong>Regiões produtoras:</strong> Mato Grosso, Bahia e Goiás.</li>
+            </ul>
+        </div>
+
+        <!-- Trigo -->
+        <div class="cultivo-item">
+            <h3>Trigo</h3>
+            <p>O <strong>trigo</strong> é uma cultura estratégica para o Brasil, que tem aumentado a produção interna nos últimos anos.</p>
+            <ul>
+                <li><strong>Clima ideal:</strong> O trigo prefere climas subtropicais, com temperaturas entre 15°C e 25°C.</li>
+                <li><strong>Época de plantio:</strong> O plantio ocorre entre maio e julho.</li>
+                <li><strong>Duração da safra:</strong> A colheita ocorre de setembro a dezembro, com um ciclo de 110 a 130 dias.</li>
+                <li><strong>Regiões produtoras:</strong> Paraná, Rio Grande do Sul e São Paulo.</li>
+            </ul>
+        </div>
+
+        <!-- Feijão -->
+        <div class="cultivo-item">
+            <h3>Feijão</h3>
+            <p>O <strong>feijão</strong> é um alimento básico na dieta brasileira, cultivado em praticamente todas as regiões do país.</p>
+            <ul>
+                <li><strong>Clima ideal:</strong> O feijão prefere temperaturas entre 15°C e 30°C, com boa distribuição de chuvas.</li>
+                <li><strong>Época de plantio:</strong> Existem três safras: de outubro a dezembro, janeiro a março, e março a maio.</li>
+                <li><strong>Duração da safra:</strong> A colheita ocorre de 70 a 100 dias após o plantio.</li>
+                <li><strong>Regiões produtoras:</strong> Minas Gerais, Goiás e Paraná.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

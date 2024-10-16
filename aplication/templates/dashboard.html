@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <style>
+        /* Estilo das informações climáticas */
+        .weather-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .weather-info .temperature {
+
+            font-size: 3rem;
+            color: white;
+        }
+
+        .weather-info .details {
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        /* Estilo do gráfico */
+        .chart-container {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* Previsão de dias futuros */
+        .forecast {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .forecast .day {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 5px;
+        }
+
+        .forecast .day img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Legenda amarela */
+        .highlight {
+            color: #ffca28;
+        }
+    </style>
+<div >
+<div>
+    <div class="weather-info">
+    <div class="details" style="flex: 1;">
+        <strong>Chuva:</strong> <span class="highlight" style="color: #ffca28;">90%</span><br>
+        <strong>Umidade:</strong> <span class="highlight" style="color: #ffca28;">70%</span><br>
+        <strong>Vento:</strong> <span class="highlight" style="color: #ffca28;">10 km/h</span>
+    </div>
+    <div class="temperature" style="">
+        28°C
+    </div>
+    <div style="flex: 1; text-align: center; color: white;">
+        Tempestades isoladas com raios e trovões
+    </div>
+    <div class="alert" style="flex: 1; display: flex; justify-content: center; align-items: center; background-color: rgba(255, 69, 58, 0.8); padding: 10px; border-radius: 10px;">
+        <i class="bi bi-exclamation-triangle-fill" style="font-size: 1.5rem; margin-right: 10px; color: white;"></i>
+        <strong style="color: white;">Alerta de Risco de Chuva!</strong>
+    </div>
+</div>
+
+    <div class="chart-container">
+        <canvas id="temperatureChart"></canvas>
+    </div>
+
+    <div class="forecast">
+        <div class="day">
+            <div>qua.</div>
+            <img src="{{ url_for('static', filename='rain_icon.png') }}" alt="chuva">
+            <div>28° 19°</div>
+        </div>
+        <div class="day">
+            <div>qui.</div>
+            <img src="{{ url_for('static', filename='cloud_icon.png') }}" alt="nublado">
+            <div>29° 19°</div>
+        </div>
+        <div class="day">
+            <div>sex.</div>
+            <img src="{{ url_for('static', filename='rain_icon.png') }}" alt="chuva">
+            <div>28° 19°</div>
+        </div>
+        <div class="day">
+            <div>sáb.</div>
+            <img src="{{ url_for('static', filename='storm_icon.png') }}" alt="tempestade">
+            <div>26° 18°</div>
+        </div>
+        <div class="day">
+            <div>dom.</div>
+            <img src="{{ url_for('static', filename='storm_icon.png') }}" alt="tempestade">
+            <div>24° 19°</div>
+        </div>
+        <div class="day">
+            <div>seg.</div>
+            <img src="{{ url_for('static', filename='storm_icon.png') }}" alt="tempestade">
+            <div>26° 19°</div>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <script>
+
+        // Gráfico de temperatura (substituir por dados reais)
+        document.addEventListener("DOMContentLoaded", function() {
+            var ctx = document.getElementById('temperatureChart').getContext('2d');
+            var temperatureChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['16:00', '19:00', '22:00', '01:00', '04:00', '07:00', '10:00', '13:00'],
+                    datasets: [{
+                        label: 'Temperatura (°C)',
+                        data: [28, 27, 23, 22, 21, 20, 25, 28],
+                        borderColor: '#ffca28',
+                        borderWidth: 2,
+                        fill: false,
+                        pointBackgroundColor: '#ffca28',
+                        pointBorderColor: '#ffca28'
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
