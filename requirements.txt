@@ -1,5 +1,0 @@
-Flask
-Flask-Bcrypt
-Flask-WTF
-Flask-SQLAlchemy
-email-validator
